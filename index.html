@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Portfolio of Your Name, designer & developer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f6f3ee;
+      --surface: #ffffff;
+      --text: #1d1b19;
+      --muted: #6b655e;
+      --line: #e3ddd4;
+      --accent: #c2461e;
+      --radius: 14px;
+      --max: 1040px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141311;
+        --surface: #1d1b19;
+        --text: #f1ede7;
+        --muted: #a39c93;
+        --line: #2e2b27;
+        --accent: #f0794f;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+    .logo { font-family: "Fraunces", serif; font-weight: 600; font-size: 1.2rem; text-decoration: none; }
+    .logo span { color: var(--accent); }
+    nav ul { display: flex; gap: 28px; list-style: none; }
+    nav ul a { text-decoration: none; color: var(--muted); font-size: 0.95rem; font-weight: 500; transition: color .2s; }
+    nav ul a:hover { color: var(--text); }
+
+    /* Hero */
+    .hero { padding: 120px 0 100px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.85rem; font-weight: 500; color: var(--muted);
+      border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px;
+      margin-bottom: 28px;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #2fa36b; }
+    h1 {
+      font-family: "Fraunces", serif; font-weight: 400;
+      font-size: clamp(2.6rem, 6.5vw, 4.8rem); line-height: 1.05; letter-spacing: -0.02em;
+      max-width: 14ch;
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+    .hero p { margin-top: 24px; font-size: 1.15rem; color: var(--muted); max-width: 52ch; }
+    .btns { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 12px 22px; border-radius: 999px;
+      font-weight: 500; text-decoration: none; transition: transform .15s, background .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--text); color: var(--bg); }
+    .btn-ghost { border: 1px solid var(--line); }
+
+    /* Sections */
+    section { padding: 90px 0; border-top: 1px solid var(--line); }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 44px; gap: 20px; flex-wrap: wrap; }
+    h2 { font-family: "Fraunces", serif; font-weight: 400; font-size: clamp(1.8rem, 3.5vw, 2.5rem); letter-spacing: -0.01em; }
+    .section-num { color: var(--muted); font-size: 0.9rem; }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; }
+    .about-grid p { color: var(--muted); margin-bottom: 16px; font-size: 1.05rem; }
+    .about-grid p strong { color: var(--text); font-weight: 500; }
+    .skills h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 14px; font-weight: 600; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .tag { font-size: 0.88rem; padding: 6px 12px; border-radius: 8px; background: var(--surface); border: 1px solid var(--line); }
+
+    /* Projects */
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      overflow: hidden; text-decoration: none; transition: transform .2s, box-shadow .2s;
+      display: flex; flex-direction: column;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px -20px rgba(0,0,0,.25); }
+    .thumb { aspect-ratio: 16 / 10; display: grid; place-items: center; font-family: "Fraunces", serif; font-size: 2.4rem; color: rgba(255,255,255,.9); }
+    .t1 { background: linear-gradient(135deg, #c2461e, #e8a33d); }
+    .t2 { background: linear-gradient(135deg, #2b4c7e, #5fa8d3); }
+    .t3 { background: linear-gradient(135deg, #2f6b4f, #9bc472); }
+    .t4 { background: linear-gradient(135deg, #5b3a7a, #c77dba); }
+    .card-body { padding: 22px 24px 26px; }
+    .card-body h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 6px; display: flex; justify-content: space-between; }
+    .card-body h3 .arrow { color: var(--muted); transition: transform .2s, color .2s; }
+    .card:hover .arrow { transform: translate(3px, -3px); color: var(--accent); }
+    .card-body p { color: var(--muted); font-size: 0.95rem; }
+    .card-meta { margin-top: 14px; font-size: 0.8rem; color: var(--muted); }
+
+    /* Experience */
+    .timeline { list-style: none; }
+    .timeline li { display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+    .timeline li:last-child { border-bottom: none; }
+    .when { color: var(--muted); font-size: 0.92rem; }
+    .timeline h3 { font-size: 1.05rem; font-weight: 600; }
+    .timeline h3 span { color: var(--muted); font-weight: 400; }
+    .timeline p { color: var(--muted); margin-top: 4px; font-size: 0.95rem; }
+
+    /* Contact */
+    .contact { text-align: center; padding: 110px 0; }
+    .contact h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+    .contact p { color: var(--muted); margin: 18px auto 32px; max-width: 46ch; }
+    .socials { margin-top: 28px; display: flex; justify-content: center; gap: 24px; }
+    .socials a { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
+    .socials a:hover { color: var(--accent); }
+
+    footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: 0.85rem; }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+    @media (max-width: 760px) {
+      nav ul { gap: 18px; }
+      nav ul li:nth-child(n+3) { display: none; }
+      .hero { padding: 80px 0 70px; }
+      .about-grid, .projects { grid-template-columns: 1fr; gap: 32px; }
+      .timeline li { grid-template-columns: 1fr; gap: 4px; }
+      section { padding: 70px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a href="#" class="logo">Your Name<span>.</span></a>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dot"></span> Available for new projects</div>
+      <h1>I build thoughtful things for the <em>web</em>.</h1>
+      <p>I'm a designer and developer based in Your City, focused on clean interfaces, fast sites, and products people actually enjoy using.</p>
+      <div class="btns">
+        <a href="#work" class="btn btn-primary">See my work</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>About</h2>
+        <span class="section-num">01</span>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p>Hi! I'm <strong>Your Name</strong>. I've spent the last few years helping startups and small teams turn rough ideas into polished, working products.</p>
+          <p>I care about the details — the spacing, the load time, the copy on the button — because that's where good experiences are made.</p>
+          <p>When I'm not at a keyboard, you'll find me hiking, cooking something ambitious, or hunting for good coffee.</p>
+        </div>
+        <div class="skills">
+          <h3>Languages</h3>
+          <div class="tags">
+            <span class="tag">JavaScript</span><span class="tag">TypeScript</span>
+            <span class="tag">Python</span><span class="tag">HTML/CSS</span>
+          </div>
+          <h3>Tools</h3>
+          <div class="tags">
+            <span class="tag">React</span><span class="tag">Node.js</span>
+            <span class="tag">Figma</span><span class="tag">Git</span><span class="tag">PostgreSQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Selected work</h2>
+        <span class="section-num">02</span>
+      </div>
+      <div class="projects">
+        <a class="card" href="#">
+          <div class="thumb t1">Aa</div>
+          <div class="card-body">
+            <h3>Project One <span class="arrow">↗</span></h3>
+            <p>A short description of what this project does and the problem it solves.</p>
+            <div class="card-meta">React · Node.js · 2026</div>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <div class="thumb t2">◐</div>
+          <div class="card-body">
+            <h3>Project Two <span class="arrow">↗</span></h3>
+            <p>Explain your role, the key challenge, and the result — numbers help.</p>
+            <div class="card-meta">TypeScript · Figma · 2025</div>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <div class="thumb t3">✦</div>
+          <div class="card-body">
+            <h3>Project Three <span class="arrow">↗</span></h3>
+            <p>Link each card to a live demo or the GitHub repo for the project.</p>
+            <div class="card-meta">Python · PostgreSQL · 2025</div>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <div class="thumb t4">◇</div>
+          <div class="card-body">
+            <h3>Project Four <span class="arrow">↗</span></h3>
+            <p>Swap the gradient block for a screenshot: &lt;img src="images/p4.png"&gt;.</p>
+            <div class="card-meta">HTML/CSS · 2024</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Experience</h2>
+        <span class="section-num">03</span>
+      </div>
+      <ul class="timeline">
+        <li>
+          <div class="when">2024 — Present</div>
+          <div>
+            <h3>Senior Developer <span>· Company Name</span></h3>
+            <p>One line about what you owned and the impact you had.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">2022 — 2024</div>
+          <div>
+            <h3>Frontend Developer <span>· Another Company</span></h3>
+            <p>One line about what you built and who used it.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">2018 — 2022</div>
+          <div>
+            <h3>B.S. Computer Science <span>· Your University</span></h3>
+            <p>Relevant coursework, honors, or clubs.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Let's work together.</h2>
+      <p>Have a project in mind or just want to say hi? My inbox is always open.</p>
+      <a href="mailto:you@example.com" class="btn btn-primary">you@example.com</a>
+      <div class="socials">
+        <a href="https://github.com/your-username">GitHub</a>
+        <a href="https://www.linkedin.com/in/your-profile">LinkedIn</a>
+        <a href="#">Résumé (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year"></span> Your Name</span>
+      <span>Hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
